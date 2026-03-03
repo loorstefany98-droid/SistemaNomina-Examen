@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace app.Controllers
 {
@@ -23,11 +24,19 @@ namespace app.Controllers
         {
             if (username == "admin" && password == "1234")
             {
-                return RedirectToAction("Index", "Home");
+                HttpContext.Session.SetString("Usuario", username);
+
+                return RedirectToAction( "Dashboard","Home");
+            }
+            if (username == "Ale005" && password == "0000")
+            {
+                HttpContext.Session.SetString("Usuario", username);
+
+                return RedirectToAction("Dashboard", "Home");
             }
 
             ViewBag.Error = "Usuario o contraseña incorrectos";
-            return View();
+            return View("Index");
         }
     }
 }
