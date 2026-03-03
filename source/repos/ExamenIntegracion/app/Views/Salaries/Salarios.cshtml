@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Salarios";
+}
+<h2>Salarios</h2>
+<form asp-action="Index" method="post">
+
+    <div class="mb-3">
+        <label>Base Salary</label>
+        <input type="number" name="baseSalary" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Bonus</label>
+        <input type="number" name="bonus" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calculate</button>
+
+</form>
+
+@if (ViewBag.Total != null)
+{
+    <div class="alert alert-success mt-3">
+        Total Salary: @ViewBag.Total
+    </div>
+}
