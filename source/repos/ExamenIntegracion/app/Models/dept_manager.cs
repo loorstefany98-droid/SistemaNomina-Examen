@@ -1,6 +1,43 @@
-﻿namespace app.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace app.Models
 {
-    public class dept_manager
+    
+    [Table("dept_manager")]
+    public class Dept_Manager
     {
+        
+        [Key]
+        [Required(ErrorMessage = "El departamento es obligatorio")]
+        [Column("dept_no", Order = 0)]
+        public int dept_no { get; set; }
+
+        
+        [Key]
+        [Column("emp_no", Order = 1)]
+        public int emp_no { get; set; }
+
+        
+        [Required(ErrorMessage = "La fecha de inicio es obligatoria")]
+        [Column("from_date")]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Gerente Desde")]
+        public DateTime from_date { get; set; }
+
+        
+        [Required(ErrorMessage = "La fecha de fin es obligatoria")]
+        [Column("to_date")]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Gerente Hasta")]
+        public DateTime to_date { get; set; }
+
+        
+        [ForeignKey("emp_no")]
+        public virtual Employee? Employee { get; set; }
+
+        
+        [ForeignKey("dept_no")]
+        public virtual Department? Department { get; set; }
     }
 }
