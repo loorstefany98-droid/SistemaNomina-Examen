@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace app.Controllers
 {
@@ -81,13 +80,14 @@ namespace app.Controllers
         }
         public IActionResult EmpleadosLista()
         {
+
             return View();
         }
         public IActionResult EmpleadosFormulario()
         {
             return View();
         }
-       
     }
-
 }
+
+
