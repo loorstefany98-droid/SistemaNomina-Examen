@@ -4,30 +4,78 @@
 @{
     ViewBag.Title = "Dashboard";
 }
-h2 class="mt-4">Dashboard</h2>
 
-<div class="row mt-4">
-    <div class="col-md-3">
-        <a asp-controller="Employees" asp-action="Index" class="btn btn-success w-100">Employees</a>
+<div class="container mt-4">
+
+    <h2 class="mb-4">📊 Panel Principal</h2>
+
+    
+    <div class="row text-center">
+
+        <div class="col-md-3">
+            <div class="card shadow p-3">
+                <h5>👥 Empleados</h5>
+                <h3>25</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-3">
+                <h5>🏢 Departamentos</h5>
+                <h3>5</h3>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card shadow p-3">
+                <h5>💰 Salarios Vigentes</h5>
+                <h3>25</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow p-3 bg-warning">
+                <h5>⚠ Vigencias por vencer</h5>
+                <h3>2</h3>
+            </div>
+        </div>
+
+
     </div>
 
-    <div class="col-md-3">
-        <a asp-controller="Departments" asp-action="Index" class="btn btn-info w-100">Departments</a>
-    </div>
+    <hr class="my-4" />
 
-    <div class="col-md-3">
-        <a asp-controller="Salaries" asp-action="Index" class="btn btn-warning w-100">Salaries</a>
-    </div>
+    <!-- ACCESOS RAPIDOS -->
+    <h4 class="mb-3">Accesos Rápidos</h4>
 
-    <div class="col-md-3">
-        <a asp-controller="Reports" asp-action="Index" class="btn btn-dark w-100">Reports</a>
-        <a asp-controller="Employees" asp-action="Index">Employees</a>
+    <div class="row">
 
-        <a asp-controller="Departments" asp-action="Index">Departments</a>
+        <div class="col-md-3">
+            <a asp-controller="Employees" asp-action="EmpleadosLista" class="btn btn-primary w-100 mb-2">
+                👥 Employees
+            </a>
+        </div>
 
-        <a asp-controller="Salaries" asp-action="Index">Salaries</a>
+        <div class="col-md-3">
+            <a asp-controller="Departaments" asp-action="DepartamentosLista" class="btn btn-info w-100 mb-2">
+                🏢 Departaments
+            </a>
+        </div>
+        
+
+        <div class="col-md-3">
+            <a asp-controller="Salaries" asp-action="Salarios" class="btn btn-success w-100 mb-2">
+                💰 Salaries
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a asp-controller="Reports" asp-action="Reportes" class="btn btn-warning w-100 mb-2">
+                📊 Reportes
+            </a>
+        </div>
 
     </div>
 
 </div>
-    
