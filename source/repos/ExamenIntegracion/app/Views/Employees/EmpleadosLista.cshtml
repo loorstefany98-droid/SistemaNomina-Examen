@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h2 class="mt-4">Employees List</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Create Employee</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Juan Perez</td>
+            <td>IT</td>
+            <td>
+                <a class="btn btn-sm btn-warning">Edit</a>
+                <a class="btn btn-sm btn-danger">Delete</a>
+           <a asp-action="Create">Create Employee</a>
+           <form asp-action="Create" method="post">
+           </form>
+            </td>
+        </tr>
+    </tbody>
+</table>

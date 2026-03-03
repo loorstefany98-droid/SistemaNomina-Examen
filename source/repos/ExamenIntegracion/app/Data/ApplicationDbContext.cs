@@ -18,7 +18,7 @@ namespace app.Data
 
         public DbSet<employees> Employees { get; set; }
 
-        public DbSet<departments> Departments { get; set; }
+        public DbSet<Departments> Departments { get; set; }
 
         public DbSet<dept_emp> DeptEmps { get; set; }
 

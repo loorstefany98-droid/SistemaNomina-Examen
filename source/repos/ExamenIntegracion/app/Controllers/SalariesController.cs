@@ -3,27 +3,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace app.Controllers
 {
-    public class EmployeesController : Controller
+    public class SalariesController : Controller
     {
-        // GET: EmployeesController
+        // GET: SalariosController1
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: EmployeesController/Details/5
+        // GET: SalariosController1/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: EmployeesController/Create
+        // GET: SalariosController1/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: EmployeesController/Create
+        // POST: SalariosController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -38,13 +38,13 @@ namespace app.Controllers
             }
         }
 
-        // GET: EmployeesController/Edit/5
+        // GET: SalariosController1/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: EmployeesController/Edit/5
+        // POST: SalariosController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -59,13 +59,13 @@ namespace app.Controllers
             }
         }
 
-        // GET: EmployeesController/Delete/5
+        // GET: SalariosController1/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: EmployeesController/Delete/5
+        // POST: SalariosController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -75,19 +75,18 @@ namespace app.Controllers
                 return RedirectToAction(nameof(Index));
             }
             catch
-            {
+            { }
                 return View();
             }
-        }
-        public IActionResult EmpleadosLista()
-        {
-            return View();
-        }
-        public IActionResult EmpleadosFormulario()
-        {
-            return View();
-        }
-       
-    }
+            
 
-}
+        public IActionResult Salarios()
+        {
+            return View();
+        }
+        public IActionResult AuditoriadeSalarios()
+        {
+            return View();
+        }
+    } }
+
