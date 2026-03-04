@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace app.Models
 {
     
-    [Table("salaries")]
+    [Table("Salaries")]
     public class Salary
     {
         
