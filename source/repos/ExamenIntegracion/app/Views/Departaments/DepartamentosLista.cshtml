@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "DepartamentosLista";
+}
+<h2>Departamentos listas</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">Create Department</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Manager</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>IT</td>
+            <td>Maria Lopez</td>
+        </tr>
+    </tbody>
+</table>
+<div class="col-md-3">
+
+    <a asp-controller="Departaments" " asp-action="GerentedeDepartamento" class="btn btn-primary w-100 mb-2">
+        👥 Gerente De Departamento
+    </a>
+</div>
+<div class="col-md-3">
+
+    <a asp-controller="Departaments"" asp-action="DepartamentosLista" class="btn btn-primary w-100 mb-2">
+        👥 Lista de Departaments
+    </a>
+</div>
+<div class="col-md-3">
+
+    <a asp-controller="Departaments" " asp-action="DepartamentosFormulario" class="btn btn-primary w-100 mb-2">
+        👥 Formulario de Departamentos
+    </a>
+</div>
+<div class="col-md-3">
+
+    <a asp-controller="Departaments" " asp-action="AsignacionDepartamento" class="btn btn-primary w-100 mb-2">
+        👥 Asiganacion de Departamentos
+    </a>
+</div>

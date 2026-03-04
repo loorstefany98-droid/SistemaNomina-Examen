@@ -29,3 +29,40 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+:root {
+    --color-principal: #111827; 
+    --color-secundario: #FDF2F8;; 
+    --color-acento: #EC4899; 
+}
+
+
+body {
+    background-color: var(--color-secundario);
+}
+
+
+.navbar {
+    background-color: var(--color-principal) !important;
+}
+
+    .navbar a {
+        color: #FFFFFF !important;
+    }
+
+
+h1 {
+    color: var(--color-principal);
+}
+
+
+.btn-dark, .btn-primary {
+    background-color: var(--color-acento) !important;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+
+    .btn-dark:hover {
+        background-color: #BE185D !important; 
+    }
