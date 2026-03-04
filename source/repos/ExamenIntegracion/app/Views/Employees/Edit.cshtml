@@ -1,0 +1,48 @@
+﻿@model app.Models.employees
+
+<h2>Edit Employee</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="emp_no" />
+
+    <div class="mb-3">
+        <label class="form-label">CI</label>
+        <input asp-for="ci" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Birth Date</label>
+        <input asp-for="birth_date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input asp-for="first_name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input asp-for="last_name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Gender (M/F)</label>
+        <select asp-for="gender" class="form-select">
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Hire Date</label>
+        <input asp-for="hire_date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Correo</label>
+        <input asp-for="correo" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
