@@ -1,18 +1,12 @@
-﻿namespace app.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace app.Models
 {
     public class Departments
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        [Key]
+        public int dept_no { get; set; }
 
-        public string description { get; set; }
-        public int departmentsCount { get; set; }
-
-
-
-
-
-
-
+        public string dept_name { get; set; }
     }
 }

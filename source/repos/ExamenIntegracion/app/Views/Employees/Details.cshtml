@@ -1,5 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model app.Models.employees
+
+<h2>Employee Details</h2>
+
+<p><b>Emp No:</b> @Model.emp_no</p>
+<p><b>CI:</b> @Model.ci</p>
+<p><b>Birth Date:</b> @Model.birth_date</p>
+<p><b>First Name:</b> @Model.first_name</p>
+<p><b>Last Name:</b> @Model.last_name</p>
+<p><b>Gender:</b> @Model.gender</p>
+<p><b>Hire Date:</b> @Model.hire_date</p>
+<p><b>Correo:</b> @Model.correo</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>

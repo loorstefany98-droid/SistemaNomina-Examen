@@ -1,0 +1,17 @@
+﻿@model app.Models.employees
+
+<h2>Delete Employee</h2>
+
+<p>Are you sure you want to delete this employee?</p>
+
+<ul>
+    <li><b>Emp No:</b> @Model.emp_no</li>
+    <li><b>CI:</b> @Model.ci</li>
+    <li><b>Name:</b> @Model.first_name @Model.last_name</li>
+</ul>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="emp_no" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
