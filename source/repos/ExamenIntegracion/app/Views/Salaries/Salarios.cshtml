@@ -1,35 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewBag.Title = "Salarios";
-}
-<h2>Salarios</h2>
-<form asp-action="Index" method="post">
+﻿@model List<app.Models.salaries>
 
-    <div class="mb-3">
-        <label>Base Salary</label>
-        <input type="number" name="baseSalary" class="form-control" />
-    </div>
-
-    <div class="mb-3">
-        <label>Bonus</label>
-        <input type="number" name="bonus" class="form-control" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Calculate</button>
-
-</form>
-
-@if (ViewBag.Total != null)
-{
-    <div class="alert alert-success mt-3">
-        Total Salary: @ViewBag.Total
-    </div>
-}
-<div class="col-md-3">
-
-    <a asp-controller="Salaries" " asp-action="Auditoriadesalarios" class="btn btn-primary w-100 mb-2">
-        👥 Auditoria de Salarios
-    </a>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Empleado</th>
+            <th>Salario</th>
+            <th>Desde</th>
+            <th>Hasta</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.emp_no</td>
+                    <td>@item.salary</td>
+                    <td>@item.from_date</td>
+                    <td>@item.to_date</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.emp_no" class="btn btn-warning">Editar</a>
+                        <a asp-action="TerminarVigencia" asp-route-id="@item.emp_no" class="btn btn-danger">Terminar</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">No hay datos de salarios cargados.</td>
+            </tr>
+        }
+    </tbody>
+</table>
