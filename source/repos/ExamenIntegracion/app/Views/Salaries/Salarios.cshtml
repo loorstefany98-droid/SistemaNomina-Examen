@@ -1,35 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewBag.Title = "Salarios";
+﻿@{
+    ViewData["Title"] = "Salarios";
 }
+
 <h2>Salarios</h2>
-<form asp-action="Index" method="post">
+
+<form asp-controller="Salaries" asp-action="Calcular" method="post">
+    @Html.AntiForgeryToken()
 
     <div class="mb-3">
-        <label>Base Salary</label>
-        <input type="number" name="baseSalary" class="form-control" />
+        <label>Salario base</label>
+        <input type="number" name="salaryBase" class="form-control" value="520" />
     </div>
 
     <div class="mb-3">
-        <label>Bonus</label>
-        <input type="number" name="bonus" class="form-control" />
+        <label>Prima</label>
+        <input type="number" name="prima" class="form-control" value="1" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Calculate</button>
+    <button type="submit" class="btn btn-danger">
+        Calcular
+    </button>
+
+    <a asp-controller="Salaries" asp-action="AuditoriadeSalarios"
+       class="btn btn-danger ms-2">
+        Auditoría de Salarios
+    </a>
 
 </form>
-
-@if (ViewBag.Total != null)
-{
-    <div class="alert alert-success mt-3">
-        Total Salary: @ViewBag.Total
-    </div>
-}
-<div class="col-md-3">
-
-    <a asp-controller="Salaries" " asp-action="Auditoriadesalarios" class="btn btn-primary w-100 mb-2">
-        👥 Auditoria de Salarios
-    </a>
-</div>

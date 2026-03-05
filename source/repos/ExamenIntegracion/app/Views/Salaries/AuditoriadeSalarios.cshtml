@@ -1,7 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewBag.Title = "AuditoriadeSalarios";
-}
-<h2>Auditoria de Salarios/h2>
+﻿@model List<app.Models.log_AuditoriaSalarios>
+
+<h2>Auditoría de salarios</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Emp No</th>
+            <th>Salario</th>
+            <th>Detalle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.id</td>
+                <td>@x.fechaActualiz.ToString("yyyy-MM-dd")</td>
+                <td>@x.usuario</td>
+                <td>@x.emp_no</td>
+                <td>@x.salario</td>
+                <td>@x.DetalleCambio</td>
+            </tr>
+        }
+    </tbody>
+</table>
