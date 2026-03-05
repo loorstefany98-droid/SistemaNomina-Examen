@@ -1,9 +1,5 @@
 ﻿@model app.Models.Departments
 
-@{
-    ViewData["Title"] = "Create Department";
-}
-
 <h2>Create Department</h2>
 
 <form asp-action="Create" method="post">
@@ -15,6 +11,6 @@
         <span asp-validation-for="dept_name" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
+    <button class="btn btn-success" type="submit">Guardar</button>
     <a class="btn btn-secondary" asp-action="DepartamentosLista">Volver</a>
 </form>
