@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Calcular";
+}
+
+<h2>Calcular salario</h2>
+
+<form asp-action="Calcular" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-2">
+        <label>Emp No</label>
+        <input type="number" name="emp_no" class="form-control" required />
+    </div>
+
+    <div class="mb-2">
+        <label>Salario</label>
+        <input type="number" name="salary" class="form-control" required />
+    </div>
+
+    <div class="mb-2">
+        <label>Detalle del cambio</label>
+        <input type="text" name="DetalleCambio" class="form-control" required />
+    </div>
+
+    <button class="btn btn-danger" type="submit">Guardar</button>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="text-danger mt-2">
+            @foreach (var err in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <div>@err.ErrorMessage</div>
+            }
+        </div>
+    }
+</form>

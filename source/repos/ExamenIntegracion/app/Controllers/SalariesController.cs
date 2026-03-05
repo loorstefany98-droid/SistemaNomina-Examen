@@ -1,92 +1,102 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using app.Data;
+using app.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace app.Controllers
 {
     public class SalariesController : Controller
     {
-        // GET: SalariosController1
-        public ActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public SalariesController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(); // Views/Salaries/Index.cshtml
+        }
+
+        [HttpGet]
+        public IActionResult Calcular()
         {
             return View();
         }
 
-        // GET: SalariosController1/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: SalariosController1/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SalariosController1/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Calcular(int emp_no, long salary, string DetalleCambio)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: SalariosController1/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: SalariosController1/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: SalariosController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: SalariosController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            { }
-                return View();
-            }
             
+            bool existe = await _context.Employees.AnyAsync(e => e.emp_no == emp_no);
+            if (!existe)
+            {
+                ModelState.AddModelError("", "El empleado no existe.");
+                return View();
+            }
 
+            if (salary <= 0)
+            {
+                ModelState.AddModelError("", "El salario debe ser mayor a 0.");
+                return View();
+            }
+
+           
+            string fromDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            
+            var nuevoSalario = new salaries
+            {
+                emp_no = emp_no,
+                salary = salary,
+                from_date = fromDate,
+                to_date = null
+            };
+            _context.Salaries.Add(nuevoSalario);
+
+            
+            string usuario = HttpContext.Session.GetString("usuario") ?? "admin";
+
+            
+            var log = new log_AuditoriaSalarios
+            {
+                usuario = usuario,
+                
+                fechaActualiz = DateTime.Today,
+                DetalleCambio = string.IsNullOrWhiteSpace(DetalleCambio) ? "Actualización de salario" : DetalleCambio,
+                salario = salary,
+                emp_no = emp_no
+            };
+            _context.LogAuditoriaSalarios.Add(log);
+
+           
+            await _context.SaveChangesAsync();
+
+            
+            return RedirectToAction(nameof(AuditoriadeSalarios));
+        }
+
+        
+        [HttpGet]
+        public async Task<IActionResult> AuditoriadeSalarios()
+        {
+            var lista = await _context.LogAuditoriaSalarios
+                .OrderByDescending(x => x.fechaActualiz)
+                .ThenByDescending(x => x.id)
+                .ToListAsync();
+
+            return View(lista);
+        }
+
+
+        [HttpGet]
         public IActionResult Salarios()
         {
             return View();
         }
-        public IActionResult AuditoriadeSalarios()
-        {
-            return View();
-        }
-    } }
+    }
+}
 
