@@ -1,20 +1,20 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model app.Models.Departments
+
 @{
     ViewData["Title"] = "Create Department";
 }
 
-<h2 class="mt-4">Create Department</h2>
+<h2>Create Department</h2>
 
 <form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
 
     <div class="mb-3">
-        <label>Department Name</label>
-        <input type="text" name="Name" class="form-control" required />
+        <label class="form-label">Nombre del departamento</label>
+        <input asp-for="dept_name" class="form-control" />
+        <span asp-validation-for="dept_name" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-success">Save</button>
-    <a asp-action="Index" class="btn btn-secondary">Back</a>
-
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a class="btn btn-secondary" asp-action="DepartamentosLista">Volver</a>
 </form>
