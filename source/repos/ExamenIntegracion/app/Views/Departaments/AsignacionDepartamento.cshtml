@@ -1,11 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-    ViewBag.Title = "AsignacionDepartamento";
-}
-<h2>Asignacion A Departamentos</h2>
+﻿@model List<app.ViewModels.AsignacionRowVM>
 
+<h2>Asignación de Departamentos</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Dept</th>
+            <th>Departamento</th>
+            <th>Emp</th>
+            <th>Empleado</th>
+            <th>Desde</th>
+            <th>Hasta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.dept_no</td>
+                <td>@x.dept_name</td>
+                <td>@x.emp_no</td>
+                <td>@x.empleado</td>
+                <td>@x.from_date</td>
+                <td>@x.to_date</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 
 

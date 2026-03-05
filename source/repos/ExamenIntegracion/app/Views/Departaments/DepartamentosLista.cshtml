@@ -1,41 +1,23 @@
 ﻿@model List<app.Models.Departments>
 
-@{
-    ViewData["Title"] = "Lista de Departamentos";
-}
+<h2>Departamentos</h2>
 
-<h2>Lista de Departamentos</h2>
+<a class="btn btn-primary" asp-controller="Departaments" asp-action="Create">
+    Create Department
+</a>
 
-<!-- Botón Create -->
-<div class="mb-3">
-    <a class="btn btn-primary" asp-controller="Departaments" asp-action="Create">
-        Create Department
-    </a>
-</div>
+<hr />
 
-<!-- Menú como tu imagen -->
-<div class="d-grid gap-2" style="max-width:340px;">
-    <a class="btn btn-primary" asp-controller="Departaments" asp-action="GerentedeDepartamento">
-        👥 Gerente De Departamento
-    </a>
-
-    <a class="btn btn-primary" asp-controller="Departaments" asp-action="DepartamentosLista">
-        👥 Lista de Departamentos
-    </a>
-
-    <a class="btn btn-primary" asp-controller="Departaments" asp-action="DepartamentosFormulario">
-        👥 Formulario de Departamentos
-    </a>
-
-    <a class="btn btn-primary" asp-controller="Departaments" asp-action="AsignacionDepartamento">
-        👥 Asignacion de Departamentos
-    </a>
+<div class="d-grid gap-2" style="max-width:340px">
+    <a class="btn btn-primary" asp-controller="Departaments" asp-action="GerentedeDepartamento">Gerente De Departamento</a>
+    <a class="btn btn-primary" asp-controller="Departaments" asp-action="DepartamentosLista">Lista de Departamentos</a>
+    <a class="btn btn-primary" asp-controller="Departaments" asp-action="DepartamentosFormulario">Formulario de Departamentos</a>
+    <a class="btn btn-primary" asp-controller="Departaments" asp-action="AsignacionDepartamento">Asignacion de Departamentos</a>
 </div>
 
 <hr />
 
-<!-- Tabla desde SQL -->
-<table class="table table-bordered table-striped">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>dept_no</th>
